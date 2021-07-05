@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import consumingswapi.dto.People;
 import consumingswapi.service.PeopleService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 public class PeopleController {
@@ -18,7 +19,8 @@ public class PeopleController {
 	public PeopleController(PeopleService service) {
 		this.service = service;
 	}
-
+	
+	@ApiOperation (value = "Fetches JSON in web service and prints the sorted collection in the console")
 	@GetMapping("/")
 	public ResponseEntity<People> getData() {
 		return new ResponseEntity<>(service.consumeSwapi(), HttpStatus.OK);		 
